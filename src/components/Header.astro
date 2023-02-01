@@ -1,25 +1,36 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import { MdList, MdSearch, MdNotifications } from "react-icons/md";
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+<header
+  class="navbar fixed top-0 left-0 w-screen bg-base-200 bg-opacity-60 shadow-md backdrop-blur-md"
+>
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex={0} class="btn-ghost btn-circle btn text-2xl">
+        <MdList />
+      </label>
+      <ul
+        tabindex={0}
+        class="dropdown-content menu rounded-box menu-compact mt-3 w-52 space-y-2 bg-base-200 p-2 shadow-md"
+      >
+        <li><HeaderLink href="/">Home</HeaderLink></li>
+        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
+        <li><HeaderLink href="/about">About</HeaderLink></li>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar-center">
+    <a class="btn-ghost btn text-xl normal-case"> {SITE_TITLE}</a>
+  </div>
+  <div class="navbar-end">
+    <button class="btn-ghost btn-circle btn text-2xl">
+      <MdSearch />
+    </button>
+    <button class="btn-ghost btn-circle btn text-2xl">
+      <MdNotifications />
+    </button>
+  </div>
 </header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
-</style>
