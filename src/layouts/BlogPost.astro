@@ -16,11 +16,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
   <body>
     <Header />
-    <main>
-      <article class="prose lg:prose-xl">
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+    <div class="h-16"></div>
+    <main class="flex flex-col items-center p-8">
+      <article class="prose flex flex-col lg:prose-xl">
+        {
+          heroImage && (
+            <img
+              width={720}
+              height={360}
+              src={heroImage}
+              alt=""
+              class="self-center rounded-lg"
+            />
+          )
+        }
         <h1 class="title">{title}</h1>
-        {pubDate && <time>{pubDate}</time>}
+        {pubDate && <time class="font-mono">{pubDate}</time>}
         {
           updatedDate && (
             <div>
