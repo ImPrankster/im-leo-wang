@@ -15,17 +15,17 @@ const posts = (await getCollection("blog")).sort(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="flex h-screen w-screen flex-col">
     <Header />
     <div class="h-16"></div>
-    <main>
+    <main class="flex flex-grow flex-col">
       <section
         class="grid grid-cols-1 justify-items-center gap-y-8 p-8 md:grid-cols-2 lg:grid-cols-3"
       >
         {
           posts.map((post) => (
             <>
-              <div class="card w-full bg-base-100 shadow-lg md:h-96 md:w-80">
+              <div class="card w-full bg-base-200 shadow-lg md:h-96 md:w-80">
                 <figure>
                   {post.data.heroImage && (
                     <img

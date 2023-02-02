@@ -10,17 +10,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="flex h-screen w-screen flex-col items-start">
     <Header title={SITE_TITLE} />
-    <main class="flex flex-col p-16">
-      <div class="h-16"></div>
+    <div class="h-16"></div>
+    <main class="flex flex-grow flex-col justify-center p-16">
       <div class="pb-4 text-6xl font-black">
         I'm Leo Wang, a Web / Game Developer & Designer.
       </div>
       <div class="text-4xl font-black">Currently living in Shanghai</div>
       <div class="text-4xl font-black">
         Studying @<a
-          class="transition ease-in-out hover:text-primary"
+          class="transition ease-in-out hover:text-purple-600"
           href="https://shanghai.nyu.edu"
         >
           NYUShanghai</a
@@ -28,11 +28,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       </div>
       <div class="text-4xl font-black">
         Speaks Chinese, English & <a
-          class="transition ease-in-out hover:text-primary"
+          class="transition ease-in-out hover:hover:text-blue-600"
           href="https://typescriptlang.org"
         >
           TypeScript
         </a>
+      </div>
+      <div class="text-4xl font-black">
+        Also on <a
+          href="https://github.com/ImPrankster"
+          class="transition ease-in-out hover:text-orange-600">GitHub</a
+        >/<a
+          href="https://twitter.com/meimprankster"
+          class="transition ease-in-out hover:text-blue-600">Twitter</a
+        >
       </div>
     </main>
     <Footer />

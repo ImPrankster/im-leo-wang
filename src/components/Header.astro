@@ -1,7 +1,9 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
 import { MdList, MdSearch, MdNotifications } from "react-icons/md";
+
+const urlArr = Astro.url.toString().split("/").slice(3);
+urlArr.splice(0, 0, "Home");
 ---
 
 <header
@@ -14,7 +16,7 @@ import { MdList, MdSearch, MdNotifications } from "react-icons/md";
       </label>
       <ul
         tabindex={0}
-        class="dropdown-content menu rounded-box menu-compact mt-6 w-52 space-y-2 bg-base-100 p-2 shadow-md"
+        class="dropdown-content menu rounded-box menu-compact mt-6 w-52 space-y-2 bg-base-200 p-2 shadow-md"
       >
         <li><HeaderLink href="/">Home</HeaderLink></li>
         <li><HeaderLink href="/blog">Blog</HeaderLink></li>
@@ -22,7 +24,17 @@ import { MdList, MdSearch, MdNotifications } from "react-icons/md";
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn-ghost btn text-xl normal-case"> {SITE_TITLE}</a>
+    <a class="breadcrumbs btn-ghost btn max-w-xs" href="/">
+      <ul>
+        {
+          urlArr.map((e) => {
+            if (e) {
+              return <li>{e.toUpperCase().replaceAll("-", " ")}</li>;
+            }
+          })
+        }
+      </ul>
+    </a>
   </div>
   <div class="navbar-end">
     <button class="btn-ghost btn-circle btn text-2xl">
