@@ -31,7 +31,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           )
         }
         <h1 class="title">{title}</h1>
-        {pubDate && <time class="font-mono">{pubDate}</time>}
+        {
+          pubDate && (
+            <time datetime={pubDate.toISOString()} class="font-mono">
+              {pubDate.toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </time>
+          )
+        }
         {
           updatedDate && (
             <div>

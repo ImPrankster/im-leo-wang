@@ -1,8 +1,12 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { MdList, MdSearch, MdNotifications } from "react-icons/md";
+import { getCollection } from "astro:content";
 
-const urlArr = Astro.url.toString().split("/").slice(3);
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const urlArr = Astro.url.pathname.split("/");
 urlArr.splice(0, 0, "Home");
 ---
 
@@ -12,11 +16,11 @@ urlArr.splice(0, 0, "Home");
   <div class="navbar-start">
     <div class="dropdown">
       <label tabindex={0} class="btn-ghost btn-circle btn text-2xl">
-        <MdList />
+        <i class="material-icons">format_list_bulleted</i>
       </label>
       <ul
         tabindex={0}
-        class="dropdown-content menu rounded-box menu-compact mt-6 w-52 space-y-2 bg-base-200 p-2 shadow-md"
+        class="dropdown-content menu rounded-box mt-6 w-52 space-y-2 bg-base-200 p-2 shadow"
       >
         <li><HeaderLink href="/">Home</HeaderLink></li>
         <li><HeaderLink href="/blog">Blog</HeaderLink></li>
@@ -37,11 +41,24 @@ urlArr.splice(0, 0, "Home");
     </a>
   </div>
   <div class="navbar-end">
-    <button class="btn-ghost btn-circle btn text-2xl">
-      <MdSearch />
-    </button>
-    <button class="btn-ghost btn-circle btn text-2xl">
-      <MdNotifications />
-    </button>
+    <!--TODO Search function -->
+    <!-- <button class="btn-ghost btn-circle btn text-2xl">
+      <i class="material-icons">search</i>
+    </button> -->
+    <div class="dropdown dropdown-end">
+      <label tabindex={0} class="btn-ghost btn-circle btn text-2xl"
+        ><i class="material-icons">notifications</i></label
+      >
+      <ul
+        tabindex={0}
+        class="dropdown-content menu rounded-box mt-6 w-52 space-y-2 bg-base-200 p-2 shadow"
+      >
+        <li>
+          <HeaderLink href={`/blog/${posts[0].slug}/`}>
+            Latest post: {posts[0].data.title}
+          </HeaderLink>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>
