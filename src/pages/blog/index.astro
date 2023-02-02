@@ -17,24 +17,37 @@ const posts = (await getCollection("blog")).sort(
   </head>
   <body>
     <Header />
+    <div class="h-16"></div>
     <main>
-      <section>
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString("en-us", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </time>
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-              </li>
-            ))
-          }
-        </ul>
+      <section class="flex flex-row flex-wrap  p-8">
+        {
+          posts.map((post) => (
+            <>
+              <div class="card md:w-80 md:h-96 bg-base-100 shadow-lg">
+                <figure>
+                  {!post.data.heroImage? (<></>):(<img
+                    src={post.data.heroImage}
+                    alt={post.data.heroImage.slice(2)}
+                  />)}
+                </figure>
+                <div class="card-body">
+                  <h2 class="card-title truncate">{post.data.title}</h2>
+                  <time datetime={post.data.pubDate.toISOString()} class="font-mono">
+                    {post.data.pubDate.toLocaleDateString("en-us", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </time>
+                  <p class="truncate">{post.data.description}</p>
+                  <div class="card-actions justify-end">
+                    <a class="btn-primary btn" href={`/blog/${post.slug}/`}>Read Now</a>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))
+        }
       </section>
     </main>
     <Footer />
