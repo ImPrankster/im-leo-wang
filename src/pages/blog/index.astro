@@ -1,64 +1,17 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import IndexPage from "../../layouts/IndexPage.astro";
 import { getCollection } from "astro:content";
+import PostCard from "../../components/PostCard.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="flex h-screen w-screen flex-col">
-    <Header />
-    <div class="h-16"></div>
-    <main class="flex flex-grow flex-col">
-      <section
-        class="grid grid-cols-1 justify-items-center gap-y-8 p-8 md:grid-cols-2 lg:grid-cols-3"
-      >
-        {
-          posts.map((post) => (
-            <>
-              <div class="card w-full bg-base-200 shadow-lg md:h-96 md:w-80">
-                <figure>
-                  {post.data.heroImage && (
-                    <img
-                      src={post.data.heroImage}
-                      alt={post.data.heroImage.slice(2)}
-                    />
-                  )}
-                </figure>
-                <div class="card-body">
-                  <h2 class="card-title truncate">{post.data.title}</h2>
-                  <time
-                    datetime={post.data.pubDate.toISOString()}
-                    class="font-mono"
-                  >
-                    {post.data.pubDate.toLocaleDateString("en-us", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
-                  <p class="truncate">{post.data.description}</p>
-                  <div class="card-actions justify-end">
-                    <a class="btn-primary btn" href={`/blog/${post.slug}/`}>
-                      Read Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </>
-          ))
-        }
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+<IndexPage>
+  <section
+    class="grid grid-cols-1 justify-items-center gap-y-8 p-4 md:grid-cols-2 lg:grid-cols-3"
+  >
+    {posts.map((post) => <PostCard {...post} />)}
+  </section>
+</IndexPage>

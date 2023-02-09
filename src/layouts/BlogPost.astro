@@ -9,16 +9,15 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="bg-base-200">
   <head>
     <BaseHead title={title} description={description} />
   </head>
 
   <body>
     <Header />
-    <div class="h-16"></div>
-    <main class="flex flex-col items-center p-8">
-      <article class="prose flex flex-col lg:prose-xl">
+    <main class="mb-16 flex flex-col items-center p-8">
+      <article class="prose lg:prose-xl">
         {
           heroImage && (
             <img
@@ -53,6 +52,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         <slot />
       </article>
     </main>
+    <hr />
     <Footer />
   </body>
 </html>

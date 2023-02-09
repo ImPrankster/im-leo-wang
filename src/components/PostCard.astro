@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"blog">;
+const { slug, data } = Astro.props;
+---
+
+<div class="card w-full bg-base-100 shadow-lg md:h-96 md:w-80">
+  <figure>
+    {
+      data.heroImage && (
+        <img src={data.heroImage} alt={data.heroImage.slice(2)} />
+      )
+    }
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title truncate">{data.title}</h2>
+    <time datetime={data.pubDate.toISOString()} class="font-mono">
+      {
+        data.pubDate.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }
+    </time>
+    <p class="truncate">{data.description}</p>
+    <div class="card-actions justify-end">
+      <a class="btn-primary btn" href={`/blog/${slug}/`}> Read Now</a>
+    </div>
+  </div>
+</div>
