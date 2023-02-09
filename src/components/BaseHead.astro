@@ -6,12 +6,13 @@ import "../styles/global.css";
 export interface Props {
   title: string;
   description: string;
+  keywords: string;
   image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
+const { title, description, keywords, image = "/yoshi_dino.jpg" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -27,6 +28,8 @@ const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="Leo Wang" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
