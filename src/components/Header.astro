@@ -1,64 +1,18 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { getCollection } from "astro:content";
-
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
-const urlArr = Astro.url.pathname.split("/");
-urlArr.splice(0, 0, "Home");
 ---
 
 <header
   class="navbar sticky top-0 z-50 h-16 w-full bg-base-100 bg-opacity-60 shadow-md backdrop-blur-md"
 >
-  <div class="navbar-start">
-    <div class="dropdown">
-      <label tabindex={0} class="btn-ghost btn-circle btn text-2xl">
-        <i class="material-icons">format_list_bulleted</i>
-      </label>
-      <ul
-        tabindex={0}
-        class="dropdown-content menu rounded-box mt-6 w-52 space-y-2 bg-base-100 p-2 shadow"
-      >
-        <li><HeaderLink href="/">Home</HeaderLink></li>
-        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
-      </ul>
-    </div>
-  </div>
+  <div class="navbar-start"></div>
   <div class="navbar-center">
-    <a class="breadcrumbs btn-ghost btn max-w-xs" href="/">
-      <ul>
-        {
-          urlArr.map((e) => {
-            if (e) {
-              return <li>{e.toUpperCase().replaceAll("-", " ")}</li>;
-            }
-          })
-        }
-      </ul>
-    </a>
+    <HeaderLink href="/" class="btn btn-ghost ring-neutral-focus">
+      Home
+    </HeaderLink>
+    <HeaderLink href="/blog" class="btn btn-ghost ring-neutral-focus">
+      Blog
+    </HeaderLink>
   </div>
-  <div class="navbar-end">
-    <!--TODO Search function -->
-    <!-- <button class="btn-ghost btn-circle btn text-2xl">
-      <i class="material-icons">search</i>
-    </button> -->
-    <div class="dropdown dropdown-end">
-      <label tabindex={0} class="btn-ghost btn-circle btn text-2xl"
-        ><i class="material-icons">notifications</i></label
-      >
-      <ul
-        tabindex={0}
-        class="dropdown-content menu rounded-box mt-6 w-52 space-y-2 bg-base-100 p-2 shadow"
-      >
-        <li>
-          <HeaderLink href={`/blog/${posts[0].slug}/`}>
-            Latest post: {posts[0].data.title}
-          </HeaderLink>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <div class="navbar-end"></div>
 </header>
