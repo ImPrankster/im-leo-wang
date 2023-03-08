@@ -20,8 +20,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
   <body>
     <Header />
-    <main class="mb-16 flex flex-col items-center p-8">
-      <article class="prose lg:prose-xl">
+    <main class="mb-16 flex flex-col items-center">
+      <article class="prose w-screen p-8 lg:prose-xl">
         {
           heroImage && (
             <img
