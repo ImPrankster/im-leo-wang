@@ -34,7 +34,7 @@ Today, web development continues to evolve with the increasing popularity of web
   - GitHub Pages
 - Build a little interactive web app w what we learned
 
-### The Absolute basics of Web Development
+### Readings to prepare yourself for the Workshop
 
 [Getting started with the Web](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web) - [MDN](https://developer.mozilla.org/en-US/)
 
