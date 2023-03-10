@@ -21,7 +21,7 @@ In the late 2000s and early 2010s, web development focused on creating responsiv
 
 Today, web development continues to evolve with the increasing popularity of web-based applications, the rise of artificial intelligence and machine learning, and the growing importance of website accessibility and user experience. The future of web development is likely to see the continued development of new technologies and frameworks to create more advanced, intuitive, and user-friendly web applications.
 
-## Preparing for the Workshop
+## [Important] Preparing for the Workshop
 
 ### What will we cover on the workshop?
 
@@ -29,13 +29,9 @@ Today, web development continues to evolve with the increasing popularity of web
 - Learn tools that make web development easier
   - Emmet
   - Node.js and npm
-  - _Tailwind CSS?_
-  - _Webpack?_
-  - _Petite Vue?_
+  - Tailwind CSS
 - Learn how to deploy a website
-  - _GitHub Pages?_
-  - _Netlify?_
-  - _Vercel?_
+  - GitHub Pages
 - Build a little interactive web app w what we learned
 
 ### The Absolute basics of Web Development
