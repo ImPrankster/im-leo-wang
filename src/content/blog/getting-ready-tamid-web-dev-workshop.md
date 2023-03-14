@@ -1,6 +1,6 @@
 ---
 title: "Diving into Web Dev"
-description: "In this workshop we will talk about why we would learn web development, what web development is, and how to get started."
+description: "Getting ready for the Web dev workshop."
 pubDate: "Mar 6 2023"
 heroImage: ""
 ---
